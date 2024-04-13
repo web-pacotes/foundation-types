@@ -1,0 +1,14 @@
+{
+	"name": "foundation-types-example",
+	"version": "0.0.0",
+	"description": "Example project to test foundation-types",
+	"main": "dist/index.js",
+	"module": "dist/index.cjs",
+	"types": "dist/index.d.ts",
+	"sideEffects": false,
+	"author": "web-pacotes",
+	"license": "none",
+	"dependencies": {
+		"foundation-types": "file:../"
+	}
+}
