@@ -8,16 +8,25 @@ Curated package with types I believe all packages and apps need to promote safen
 
 ## How to use
 
-todo: describe usage
+The following is an example how to use the `Either` monad type to eliminate exceptions thrown from a division operation:
 
 ```typescript
-todo: include usage code here
-```
+import { fold, Left, Right } from './either';
 
-Additionally, you can curated package with types i believe all packages and apps need to promote safeness and reduced side effects.. Execute the following command for more info:
+function div_numbers(x: number, y: number) {
+	if (y === 0.0) {
+		return Left('cannot divide number by 0!');
+	}
 
-```bash
-foundation-types --help
+	return Right(x / y);
+}
+
+const computation = div_numbers(2, 0);
+fold(
+	computation,
+	(l) => console.error(l),
+	(r) => console.info(`division = ${r}`)
+);
 ```
 
 ## Features
@@ -37,13 +46,5 @@ or feature to include for future releases? Please create an issue via
 GitHub in order to track each contribution. Also, pull requests are very
 welcome!
 
-To contribute, start by setting up your local development environment. The [setup.md](setup.md) document will onboard you on how to do so!
-
-## Contact
-
-This template was prepared by:
-
-- João Freitas, @freitzzz
-- Rute Santos, @rutesantos4
-
-Contact us for freelancing work!
+To contribute, start by setting up your local development environment. The [setup.md](setup.md) document will onboard
+you on how to do so!
