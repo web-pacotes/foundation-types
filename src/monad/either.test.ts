@@ -1,9 +1,9 @@
 import { describe, expect, test } from '@jest/globals';
 import { fold, isLeft, isRight, Left, Right } from './either';
 
-describe('either', function() {
-	describe('isLeft', function() {
-		test('returns true if monad is left-handed', function() {
+describe('either', () => {
+	describe('isLeft', () => {
+		test('returns true if monad is left-handed', () => {
 			const value = Left(0);
 
 			const check = isLeft(value);
@@ -11,7 +11,7 @@ describe('either', function() {
 			expect(check).toBeTruthy();
 		});
 
-		test('returns false if monad is right-handed', function() {
+		test('returns false if monad is right-handed', () => {
 			const value = Right(0);
 
 			const check = isLeft(value);
@@ -20,8 +20,8 @@ describe('either', function() {
 		});
 	});
 
-	describe('isRight', function() {
-		test('returns true if monad is right-handed', function() {
+	describe('isRight', () => {
+		test('returns true if monad is right-handed', () => {
 			const value = Right(0);
 
 			const check = isRight(value);
@@ -29,7 +29,7 @@ describe('either', function() {
 			expect(check).toBeTruthy();
 		});
 
-		test('returns false if monad is left-handed', function() {
+		test('returns false if monad is left-handed', () => {
 			const value = Left(0);
 
 			const check = isRight(value);
@@ -38,8 +38,8 @@ describe('either', function() {
 		});
 	});
 
-	describe('fold', function() {
-		test('computes left callback if monad is left-handed', function() {
+	describe('fold', () => {
+		test('computes left callback if monad is left-handed', () => {
 			const value = 0;
 			const monad = Left(value);
 
@@ -52,7 +52,7 @@ describe('either', function() {
 			expect(result).toBe(value + 1);
 		});
 
-		test('computes right callback if monad is right-handed', function() {
+		test('computes right callback if monad is right-handed', () => {
 			const value = 0;
 			const monad = Right(value);
 
