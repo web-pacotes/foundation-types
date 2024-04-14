@@ -20,11 +20,15 @@ export const None = <T>() => undefined satisfies Option<T>;
  *
  * @param value - the [Option] value to check.
  */
-export const present = <T>(value: Option<T>): value is ReturnType<typeof Some<T>> => value !== undefined;
+export const present = <T>(
+	value: Option<T>
+): value is ReturnType<typeof Some<T>> => value !== undefined;
 
 /**
  * Type-guard predicate that checks if an [Option] does not contain a value.
  *
  * @param value - the [Option] value to check.
  */
-export const empty = <T>(value: Option<T>): value is ReturnType<typeof None<T>> => value === undefined;
+export const empty = <T>(
+	value: Option<T>
+): value is ReturnType<typeof None<T>> => value === undefined;
