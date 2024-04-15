@@ -1,4 +1,4 @@
-import { Either, Left, Right, fold } from 'foundation-types';
+import { Left, Right, fold } from 'foundation-types';
 
 function main() {
 	function div_numbers(x: number, y: number) {
