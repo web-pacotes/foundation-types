@@ -31,11 +31,13 @@ fold(
 
 ## Features
 
-todo: enumerate features package currently provides
+- Option type (either a value is present or absent)
+- Either type (either a value or other value)
+- Lazy type (lazily computed value)
 
 ### Upcoming features
 
-todo: enumerate features package does not provide
+New types come as I need them or as requested through an issue.
 
 ---
 
