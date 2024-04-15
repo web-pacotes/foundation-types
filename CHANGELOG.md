@@ -1,5 +1,17 @@
 # @web-pacotes/foundation-types
 
+## 0.0.2
+
+### Patch Changes
+
+- 657c386: Added the following types:
+
+  - Error type (type safe errors)
+    - IO (Read/Write) error type
+    - Unknown error type
+    - Wrapping/Unwrapping typed error in internal errors
+    - Wrapper around try/catch to execute callbacks in a safe throwable environment
+
 ## 0.0.1
 
 ### Patch Changes
