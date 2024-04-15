@@ -3,7 +3,7 @@
  */
 type Left<L> = {
 	readonly tag: 'left';
-	readonly value: L;
+	readonly left: L;
 };
 
 /**
@@ -11,7 +11,7 @@ type Left<L> = {
  */
 type Right<R> = {
 	readonly tag: 'right';
-	readonly value: R;
+	readonly right: R;
 };
 
 /**
@@ -27,7 +27,7 @@ export type Either<L, R> = Left<L> | Right<R>;
 export const Left = <L, R>(value: L) => {
 	return {
 		tag: 'left',
-		value: value
+		left: value
 	} satisfies Left<L> & Either<L, R>;
 };
 
@@ -39,7 +39,7 @@ export const Left = <L, R>(value: L) => {
 export const Right = <L, R>(value: R) => {
 	return {
 		tag: 'right',
-		value: value
+		right: value
 	} satisfies Right<R> & Either<L, R>;
 };
 
@@ -67,15 +67,15 @@ export const isRight = <L, R>(value: Either<L, R>): value is Right<R> =>
  * @param right - callback for folding the right-hnd
  * @returns the folded value based on the computed callbacks.
  */
-export const fold = <FL, FR, L, R>(
+export const fold = <L, R, F>(
 	value: Either<L, R>,
-	left: (l: L) => FL,
-	right: (r: R) => FR
+	left: (l: L) => F,
+	right: (r: R) => F
 ) => {
 	switch (value.tag) {
 		case 'left':
-			return left(value.value);
+			return left(value.left);
 		case 'right':
-			return right(value.value);
+			return right(value.right);
 	}
 };

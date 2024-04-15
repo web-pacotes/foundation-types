@@ -46,7 +46,7 @@ describe('either', () => {
 			const result = fold(
 				monad,
 				(l) => l + 1,
-				(r) => r - 1
+				(r) => value
 			);
 
 			expect(result).toBe(value + 1);
@@ -58,7 +58,7 @@ describe('either', () => {
 
 			const result = fold(
 				monad,
-				(l) => l + 1,
+				(l) => value,
 				(r) => r - 1
 			);
 
