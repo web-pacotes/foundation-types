@@ -34,6 +34,11 @@ fold(
 - Option type (either a value is present or absent)
 - Either type (either a value or other value)
 - Lazy type (lazily computed value)
+- Error type (type safe errors)
+  - IO (Read/Write) error type
+  - Unknown error type
+  - Wrapping/Unwrapping typed error in internal errors
+  - Wrapper around try/catch to execute callbacks in a safe throwable environment
 
 ### Upcoming features
 
