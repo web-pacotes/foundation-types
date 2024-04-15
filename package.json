@@ -1,6 +1,6 @@
 {
 	"name": "@web-pacotes/foundation-types",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Curated package with types I believe all packages and apps need to promote safeness and reduced side effects.",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
