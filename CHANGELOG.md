@@ -1,5 +1,11 @@
 # @web-pacotes/foundation-types
 
+## 0.0.3
+
+### Patch Changes
+
+- 98348f1: chore: fix package not bundling as module
+
 ## 0.0.2
 
 ### Patch Changes
