@@ -19,12 +19,13 @@ npm i
 (cd example; npm i)
 ```
 
-If everything finished successfully, you're ready to start hacking around! The table below will onboard you on the available commands to use.
+If everything finished successfully, you're ready to start hacking around! The table below will onboard you on the
+available commands to use.
 
 | Script                 | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------- |
 | `npm run build`        | transpile and bundle files in `.mjs`, `.js`, `.d.ts` and respective source-maps |
-| `npm run start`        | run the project with `swc` compilation                                          |
+| `npm run start`        | run the project with `esbuild` bundling                                         |
 | `npm run test`         | run the unit tests                                                              |
 | `npm run lint`         | analyze and lint the project                                                    |
 | `npm run format`       | format the project based on lint feedback                                       |
@@ -35,4 +36,5 @@ If everything finished successfully, you're ready to start hacking around! The t
 
 ## Automatically Publishing to NPM
 
-To automatically publish the package to NPM, you will need to grab a token of the publisher account for CI usage, and set it as a repository secret in GitHub under the `NPM_TOKEN` identifier.
+To automatically publish the package to NPM, you will need to grab a token of the publisher account for CI usage, and
+set it as a repository secret in GitHub under the `NPM_TOKEN` identifier.
