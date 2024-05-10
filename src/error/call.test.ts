@@ -1,5 +1,10 @@
 import { describe, expect, test } from '@jest/globals';
-import { runAsyncCatching, runCatching, safeAsyncThrowCall, safeThrowCall } from './call';
+import {
+	runAsyncCatching,
+	runCatching,
+	safeAsyncThrowCall,
+	safeThrowCall
+} from './call';
 import { fold, isRight, Right } from '../monad';
 import { isTypedError, TypedError } from './typed';
 import { UnknownError } from './unknown';

@@ -46,7 +46,7 @@ export const safeAsyncThrowCall = async <L extends TypedError, R>(
  * returning them in a [Either<L, O>] value.
  *
  * Same purpose as [safeThrowCall] but doesn't require the right hand to be a value of type Either.
- * 
+ *
  * Inspired from Kotlin `runCatching` top-level function {@link https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/run-catching.html}
  *
  * @param call - the callback to execute
