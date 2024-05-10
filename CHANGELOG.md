@@ -1,5 +1,11 @@
 # @web-pacotes/foundation-types
 
+## 0.0.4
+
+### Patch Changes
+
+- d464490: feat(error): implement runCatching and runAsyncCatching functions
+
 ## 0.0.3
 
 ### Patch Changes
