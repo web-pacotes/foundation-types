@@ -1,4 +1,4 @@
-import { type Either, Left } from '../monad';
+import { type Either, Left, Right } from '../monad';
 import type { TypedError } from './typed';
 import { safeUnknownError, UnknownError } from './unknown';
 
@@ -23,7 +23,7 @@ export const safeThrowCall = <L extends TypedError, R>(
 };
 
 /**
- * Sane as [safeThrowCall] but for an asynchronous callback.
+ * Same as [safeThrowCall] but for an asynchronous callback.
  *
  * @param call - the asynchronous callback to execute
  * @param onError - a callback to transform an internal [Error] in a [TypedError]
@@ -40,3 +40,32 @@ export const safeAsyncThrowCall = async <L extends TypedError, R>(
 		return Left(onError?.call(this, internal) ?? UnknownError(internal));
 	}
 };
+
+/**
+ * Executes a callback in a safe throwable environment, by catching errors and
+ * returning them in a [Either<L, O>] value.
+ *
+ * Same purpose as [safeThrowCall] but doesn't require the right hand to be a value of type Either.
+ *
+ * Inspired from Kotlin `runCatching` top-level function {@link https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/run-catching.html}
+ *
+ * @param call - the callback to execute
+ * @param onError - a callback to transform an internal [Error] in a [TypedError]
+ */
+export const runCatching = <L extends TypedError, O>(
+	call: () => O,
+	onError?: (error: Error) => L
+) => safeThrowCall(() => Right<L, O>(call()), onError);
+
+/**
+ * Same as [runCatching] but for an asynchronous callback.
+ *
+ * Same purpose as [safeThrowCall] but doesn't require the right hand to be a value of type Either.
+ *
+ * @param call - the asynchronous callback to execute
+ * @param onError - a callback to transform an internal [Error] in a [TypedError]
+ */
+export const runAsyncCatching = async <L extends TypedError, O>(
+	call: () => Promise<O>,
+	onError?: (error: Error) => L
+) => safeAsyncThrowCall(async () => Right<L, O>(await call()), onError);
