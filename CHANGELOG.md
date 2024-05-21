@@ -1,5 +1,12 @@
 # @web-pacotes/foundation-types
 
+## 0.0.5
+
+### Patch Changes
+
+- 686b650: - feat(monad): implement leftMap and leftRight
+  - refactor(monad): mark Left and Right output as Either<L, R>
+
 ## 0.0.4
 
 ### Patch Changes
