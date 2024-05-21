@@ -5,14 +5,14 @@ import {
 	safeAsyncThrowCall,
 	safeThrowCall
 } from './call';
-import { fold, isRight, Right } from '../monad';
+import { Either, fold, isRight, Right } from '../monad';
 import { isTypedError, TypedError } from './typed';
 import { UnknownError } from './unknown';
 
 describe('call', () => {
 	describe('safeThrowCall', () => {
 		test('returns callback result if no error is thrown', () => {
-			const callback = () => Right(2 + 2);
+			const callback = () => Right(2 + 2) satisfies Either<TypedError, number>;
 
 			const result = safeThrowCall(callback);
 			const isRightHanded = isRight(result);
@@ -58,7 +58,8 @@ describe('call', () => {
 
 	describe('safeAsyncThrowCall', () => {
 		test('returns callback result if no error is thrown', async () => {
-			const callback = async () => Right(2 + 2);
+			const callback = async () =>
+				Right(2 + 2) satisfies Either<TypedError, unknown>;
 
 			const result = await safeAsyncThrowCall(callback);
 			const isRightHanded = isRight(result);
