@@ -24,7 +24,7 @@ export type Either<L, R> = Left<L> | Right<R>;
  *
  * @param value - the value that represents the left hand
  */
-export const Left = <L, R>(value: L) => {
+export const Left = <L, R>(value: L): Either<L, R> => {
 	return {
 		tag: 'left',
 		left: value
@@ -36,7 +36,7 @@ export const Left = <L, R>(value: L) => {
  *
  * @param value - the value that represents the right hand
  */
-export const Right = <L, R>(value: R) => {
+export const Right = <L, R>(value: R): Either<L, R> => {
 	return {
 		tag: 'right',
 		right: value
@@ -79,3 +79,26 @@ export const fold = <L, R, F>(
 			return right(value.right);
 	}
 };
+
+/**
+ * Transforms an [Either] monad by mapping the left hand to a new value, if left-handed.
+ *
+ * @param value - the monad value to fold
+ * @param left - callback for mapping the left-hand
+ * @returns - an [Either] monad in which the left callback is applied to the left hand.
+ */
+export const leftMap = <L1, L2, R>(value: Either<L1, R>, left: (l: L1) => L2) =>
+	(isLeft(value) ? Left(left(value.left)) : value) satisfies Either<L2, R>;
+
+/**
+ * Transforms an [Either] monad by mapping the right hand to a new value, if right-handed.
+ *
+ * @param value - the monad value to fold
+ * @param left - callback for mapping the right-hand
+ * @returns - an [Either] monad in which the right callback is applied to the right hand.
+ */
+export const rightMap = <L, R1, R2>(
+	value: Either<L, R1>,
+	right: (r: R1) => R2
+) =>
+	(isRight(value) ? Right(right(value.right)) : value) satisfies Either<L, R2>;
